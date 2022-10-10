@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up form</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+        <div class="leftImage">
+            <div class = darkbox>
+                    <img src="tree.png" alt="Tree">
+                    ODIN
+            </div>
+        </div>
+        <div class ="rightForm">
+            <div class="topQuoteBox">
+                <p>
+                    This is a real online service! You need something like this in your life to help you realize your deepest dreams.
+                    Sign up now to get started.
+                </p>
+                <p>
+                    You know you want to.
+                </p>
+            </div>
+            <div class ="formBox">
+                <h2> Let's do this! </h2>
+                <div class="input">
+                <form action="" method ="post">
+                    <label for="firstname">First Name
+                    <input type="text" id="firstname" name="first_name">
+                    </label>
+                            
+                    <label for="lastname">Last Name
+                    <input type="text" id ="lastname" name="last_name">
+                    </label>
+
+                    <label for="email">Email
+                    <input type="email" id="email" name="email">
+                    </label>
+        
+                    <label  for="phone">Phone number
+                    <input type="tel" id="phone" name="phone_number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                    </label>
+                        
+                    <label for="password">Password
+                    <input type="password" id="password" minlength="8" maxlength="50" name="password">
+                    </label>
+                
+                    <label for="confirmpassword">Confirm Password
+                    <input type="password" id="confirmpassword" minlength="8" maxlength="50" name="password">
+                    </label>
+                
+                </form>
+                </div>
+            </div>
+            <div class="bottomBox">
+                <button type="submit">Create Account</button>
+                <div class="logIn">Already have an account? <button type="submit">Log in</button></div>
+            </div>
+        </div>
+
+</body>
+</html>
