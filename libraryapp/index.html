@@ -15,24 +15,27 @@
     </header>
     <div class="library-content">
         <button id="addBookBtn" class="add-book-btn">+ Add Book</button>
-        <div id="booksGrid" class="book-grid">
+        <div id="booksGrid" class="books-grid">
         </div>
     </div>
     <footer class="footer"> </footer>
     <div id="addBookContainer" class= "add-book-container">
-            <h3>Add your new book!</h3>
-            <form id="addBookForm" class="add-book-form">
-                <input id="title" class="input" type="text" placeholder="Title" required="" maxlength="100">
-                <input id="author" class="input" type="text" placeholder="Author" required="" maxlength="100">
-                <input id="pages" class="input" type="text" placeholder="Pages" required="" maxlength="10000">
+            <h3>Add your new book!<button id ="closeBtn" class="close-button">&times;</button></h3>
+            <form id="addBookForm" class="add-book-form" >
+                <input id="title" class="input" type="text" name= "title" placeholder="Title" required="" maxlength="100">
+                <input id="author" class="input" type="text" name="author" placeholder="Author" required="" maxlength="100">
+                <input id="pages" class="input" type="number" name="pages" placeholder="Pages" required="" maxlength="10000">
                 <div class="is-read">
                     <label for is-read>Read?</label>
-                    <input id="isRead" class="checkbox" type="checkbox">
+                    <input id="read" name="read" class="checkbox" type="checkbox">
                 </div>
-                <button class="btn-green-submit" type="submit">Submit</button>
+                <button class="btn-blue-submit" id="btnBlueSubmit" type="submit">Submit</button>
             </form>
     </div>
-    <div id="overlay"></div>
+    <div id="msg">
+        <pre></pre>
+    </div>
+    <div id="overlay" class="overlay"></div>
     <script src="library.js"></script>
 </body>
 </html>
