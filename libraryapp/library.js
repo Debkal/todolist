@@ -43,7 +43,6 @@ const closeBtn=document.getElementById('closeBtn');
 const btnBlueSubmit =document.getElementById('btnBlueSubmit')
 
 
-
 function openAddBookModal(){
     addBookForm.reset();
     addBookContainer.classList.add('active')
@@ -100,12 +99,7 @@ const testInput = (ev) =>{
     updateBooksGrid();
     closeAddBookModal();
 }
-function addBook() {
-    event.preventDefault()
-    newBook= new Book(title,author,pag)
-    library.addBook(newBook)
-    updateBookContainer()
-}
+
 
 const createBookCardContainer = (book) => {
     const bookCardContainer = document.createElement('div')
@@ -126,9 +120,11 @@ const createBookCardContainer = (book) => {
 
     title.textContent= book.title
     author.textContent = book.author
-    pages.textContent= book.pages + 'pages'
+    pages.textContent= book.pages + ' pages'
     removeBtn.textContent= "Remove"
     
+    bookCardContainer.setAttribute("id", book.title);
+
     if (book.read === true) {
         readBtn.textContent = 'Read'
         readBtn.classList.add('read-btn-card')
@@ -144,6 +140,16 @@ const createBookCardContainer = (book) => {
     grpbtnContainer.appendChild(removeBtn)
     bookCardContainer.appendChild(grpbtnContainer)
     booksGrid.appendChild(bookCardContainer)
+
+    readBtn.addEventListener('click', () => {
+        book.read = !book.read;
+        updateBooksGrid();
+    })
+    removeBtn.addEventListener('click', () => {
+        document.getElementById(book.title).remove();
+        library.removeBook(book.title);
+    })
+    return false;
 }
 
 addBookBtn.addEventListener ('click',() => openAddBookModal())
