@@ -60,7 +60,7 @@ text-align: center;
     transition: 200ms ease-in-out;
     border-radius: 20px;
     z-index: 10;
-    background-color: #fde68a;
+    background-color: #FBFFBB;
     width: 400px;
     max-width: 80%;
 }
@@ -108,7 +108,7 @@ text-align: center;
     border-radius: 49em;
     outline:none;
     border:none;
-    background-color: #a7f3d0;
+    background-color: #FEFFE8;
     cursor: pointer;
     transition-duration: 4ms;
 }
@@ -173,4 +173,35 @@ text-align: center;
     flex-direction: column;
     gap:1rem;
     margin:1rem;
+}
+.readBtn-card-container{
+    font-size:20px;
+    padding:0.5rem;
+    border-radius: 49em;
+    border:none;
+    cursor:pointer;
+    transition: filter 0.15s ease-in-out
+}
+.readBtn-card-container:hover{
+    filter:brightness(80%);
+}
+.readBtn-card-container.read-btn-card{
+    background-color: #b9ffde;
+}
+
+.readBtn-card-container.not-read-btn-card{
+    background-color: #FFDFEE;
+}
+
+.removeBtn-card-container{
+    font-size: 20px;
+    padding:0.5rem;
+    border-radius: 49em;
+    background-color: #E0DFFF;
+    transition:filter 0.15s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+.removeBtn-card-container:hover{
+    filter:brightness(80%);
 }
