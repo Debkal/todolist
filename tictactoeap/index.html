@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <p>Welcome to Tic tac toe!</p>
+        <form>
+            <label for="difficulty">Select your difficulty</label>
+            <select id="difficulty" name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="impossible">Impossible</option>
+            </select>
+        </form>
+        <div class="button-grp">
+            <button id="btnX" class="btn x">X</button>
+            <button id="btnO" class="btn o">O</button>
+        </div>
+    
+        <div class="game-board-container" id="gameBoardContainer">
+            <button class="spot one"id="spot1"></button>
+            <button class="spot two"id="spot2"></button>
+            <button class="spot three"id="spot3"></button>
+            <button class="spot four"id="spot4"></button>
+            <button class="spot five"id="spot5"></button>
+            <button class="spot six"id="spot6"></button>
+            <button class="spot seven"id="spot7"></button>                                                                                    
+            <button class="spot eight"id="spot8"></button>
+            <button class="spot nine"id="spot9"></button>
+        </div>
+        <button id="btnRestart" class="btn-restart">Restart</button>
+    </div>
+    <footer>
+        <p>Made by Debkal <a href="https://github.com/Debkal/tictactoeapp">Source</a></p>
+    </footer>
+    <script src="tictactoe.js"></script>
+</body>
+</html>
