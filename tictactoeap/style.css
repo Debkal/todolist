@@ -5,7 +5,12 @@ body{
     padding:0px;
     margin:0px;
 }
-
+.player {
+    display:none;
+}
+.computer{
+    display: none;
+}
 .header{
     display:flex;
     flex-direction: column;
@@ -30,6 +35,15 @@ label{
     padding:1rem;
     border:none;
     font-size: 1rem;
+}
+.selected {
+    border: black solid 1px;
+    box-shadow: -1px 5px 15px -5px lightgray;
+}
+.not-selected{
+    box-shadow:none;
+    color: gray;
+    filter: brightness(70%);
 }
 .game-board-container{
     background-color: #ecfdf5;

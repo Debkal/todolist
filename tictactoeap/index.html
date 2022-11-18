@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="announce">
-        <p>The winner is</p>
-        <p>Player</p>
-        <p>Computer</p>
+    <div class="player" id="player">
+        <p>The Player has beaten the Computer!</p>
+    </div>
+    <div class="computer" id="computer">
+        <p>The Computer has beaten the Player!</p>
     </div>
     <div class="header">
         <p>Welcome to Tic tac toe!</p>
@@ -24,8 +25,8 @@
             </select>
         </form>
         <div class="button-grp">
-            <button id="btnX" class="btn x">X</button>
-            <button id="btnO" class="btn o">O</button>
+            <button id="btnX" class="btn btnp x">X</button>
+            <button id="btnO" class="btn btnp o">O</button>
         </div>
     
         <div class="game-board-container" id="gameBoardContainer">
