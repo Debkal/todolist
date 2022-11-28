@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="animation1.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="win">
+        <p class="winner hide">The Winner is</p>
+        <p class="x-text sign hide">X</p>
+        <p class="o-text sign hide">O</p>
+        <p class="winner draw hide">It's a Draw</p>
+    </div>
+
+    <div class="card">
+        <div class="item select">
+            <p>Welcome to Tic Tac Toe!</p>
+            <form action="" class="form">
+                <label for="levels">Select your difficulty!</label>
+                <select name="levels" id="levels">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                    <option value="unbeatable">Unbeatable</option>
+                </select>
+            </form>
+        </div>
+        <div class="item player">
+            <button class="btn btn-p x selected">X</button>
+            <button class="btn btn-p o not-selected">O</button>
+        </div>
+        <div class="item board">
+            <button class="field"><p></p></button>
+            <button class="field"><p></p></button>
+            <button class="field no-r"><p></p></button>
+            <button class="field"><p></p></button>
+            <button class="field"><p></p></button>
+            <button class="field no-r"><p></p></button>
+            <button class="field no-b"><p></p></button>
+            <button class="field no-b"><p></p></button>
+            <button class="field no-b no-r"><p></p></button>
+        </div>
+        <div class="item rst">
+            <button class="btn restart">Restart</button>
+        </div>
+    </div>
+
+<script src="tictactoe1.js"></script></body>
+</html>

@@ -70,20 +70,53 @@ const Computer = (type) => {
     return {getCompType};
 };
 const displayController = (() => {
-    const spotElements = document.querySelectorAll(".spot");
+    const spotElements = Array.from(document.querySelectorAll("button.spot"));
     const btnRestart= document.getElementById('btnRestart');
-    const playerWin= document.getElementById('player');
-    const computerWin= document.getElementById('computer');
     const playerX = document.getElementById('btnX');
     const playerO = document.getElementById('btnO');
     const btnGrp= document.getElementById('btnGrp');
-
+    
     const changePlayertype = (type) => {
         gameController.changeType(type);
+        gameController.restart();
+    }
+    const clear = () => {
+        spotElements.forEach(spot => {
+            const p = spot.childNodes[0];
+            p.classList = [];
+            p.textContent = '';
+        })
+    }
+    const makeRestart = () => {
+        const body= document.querySelector('body');
+        body.addEventListener('click',gameController.restart);
+    }
+    const deactivate = () => {
+        spotElements.forEach(spot => {
+            spot.setAttribute('disabled','');
+        });
+    }
+    const activate = () => {
+        spotElements.forEach(spot => {
+            spot.removeAttribute('disabled','');
+        })
     }
 
+    for(let i=0; i<spotElements.length;i++){
+            spot= spotElements[i];
+            spot.addEventListener('click', gameController.playerStep.bind(spot,i));}
+    btnRestart.addEventListener('click',gameController.restart);
+    
     playerX.addEventListener('click', changePlayertype.bind(this,'X'));
     playerO.addEventListener('click', changePlayertype.bind(this,'O'));
+    
+
+    return{
+        deactivate,
+        activate,
+        clear,
+        makeRestart
+    }
 })();
 
 
@@ -175,10 +208,33 @@ const gameController = (() => {
                 playerWin.classList.remove('hide');
             }
             else{
-                computerWin.classList.remove('high');
+                computerWin.classList.remove('hide');
             }
         }
+        console.log('deactivate');
+        displayController.deactivate();
+        displayController.bodyRestart();
+    }
+    const restart = async function () {
+        const card = document.getElementById('card');
+        const winElements = document.querySelector('.win div');
 
+        card.classList.add('unblur');
+
+        gameBoard.clearSpot()
+        displayController.clear();
+        if(player.getType() == 'O') {
+            compStep();
+        }
+        console.log('resstarting');
+        displayController.activate();
+
+        card.classList.remove('blur');
+
+        winElements.forEach(element => {
+            element.classList.add('hide');
+        })
+        document.body.removeEventListener('click',gameController.restart);
     }
     const playerStep = (num) => {
         const spot =gameBoard.getSpot(num);
@@ -191,7 +247,11 @@ const gameController = (() => {
             endGame("Draw");
             }
             else {
-                displayController
+                displayController.deactivate();
+                compStep();
+                if(!checkWin(gameBoard)){
+                    displayController.activate();
+                }
             }
         }
         else{
@@ -205,7 +265,10 @@ const gameController = (() => {
         checkWin,
         checkDraw,
         playerStep,
-        endGame
+        endGame,
+        restart
     }
 
 })();
+
+gameController.changeType('X')
