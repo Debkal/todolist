@@ -1,0 +1,19 @@
+{
+  "name": "restaurantproject",
+  "version": "1.0.0",
+  "description": "restaurant webpage project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Debkal/restaurantpage.git"
+  },
+  "author": "Debkal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Debkal/restaurantpage/issues"
+  },
+  "homepage": "https://github.com/Debkal/restaurantpage#readme"
+}
