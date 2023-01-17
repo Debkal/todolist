@@ -1,4 +1,7 @@
 import './style.css';
+import header from './header.js'
+import menuDisplay from './menu';
+import contactMenu from './contact';
 
 //image assets
 import fry from './fry.jpg';
@@ -14,7 +17,7 @@ import wings from './wings.jpg';
 console.log('hello')
 
 
-function display() {
+function homeDisplay() {
     //append content
     const content= document.getElementById('content');
     //homepage
@@ -72,10 +75,15 @@ function display() {
     homePageContent.appendChild(homeHoursContainer);
     homeHoursContainer.appendChild(homeHoursTitle);
     homeHoursContainer.appendChild(homeHours);
-    return 
+
+    return
 }
-    
-display();
+initialPage();
+
+function initialPage () {
+    const tabSelection = document.querySelectorAll('#tabContainerDiv');
+
+}
     //menu tab
     const menuPageContent= document.createElement('div');
     const menuPieTitle= document.createElement('div');
