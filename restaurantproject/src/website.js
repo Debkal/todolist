@@ -1,4 +1,6 @@
 import attachHome from "./home";
+import attachMenu from "./menu";
+import attachContact from "./contact";
 
 //displaying header with Tabs
 function displayHeader() {
