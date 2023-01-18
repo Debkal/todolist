@@ -1,4 +1,6 @@
 import './style.css';
+import initializeSite from './website.js';
+
 import header from './header.js'
 import menuDisplay from './menu';
 import contactMenu from './contact';
@@ -12,6 +14,7 @@ import pepperonipie from './pepperonipie.jpg';
 import sausagepie from './sausagepie.jpg';
 import sausagepie2 from './sausagepie2.jpg';
 import wings from './wings.jpg';
+import website from './website';
 
 
 console.log('hello')
