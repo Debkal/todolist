@@ -1,23 +1,23 @@
-import fry from './fry.jpg';
-import doubledouble from './doubledouble.jpg';
-import italiansausage from './italiansausage.jpg';
-import nuggy from './nuggy.jpg';
-import pepperonipie from './pepperonipie.jpg';
-import sausagepie from './sausagepie.jpg';
-import sausagepie2 from './sausagepie2.jpg';
-import wings from './wings.jpg';
+import fry from './pics/fry.jpg';
+import doubledouble from './pics/doubledouble.jpg';
+import italiansausage from './pics/italiansausage.jpg';
+import nuggy from './pics/nuggy.jpg';
+import pepperonipie from './pics/pepperonipie.jpg';
+import sausagepie from './pics/sausagepie.jpg';
+import sausagepie2 from './pics/sausagepie2.jpg';
+import wings from './pics/wings.jpg';
 
 function menuDisplay() {
 
     const menuContent = document.createElement("div");
+    menuContent.classList.add("menu-content");
 
     return menuContent;
 }
 
 function attachMenu() {
-    const pageContent = document.getElementById("pageContent");
-    pageContent.textContent= "";
-    pageContent.appendChild(menuDisplay());
+    const main = document.getElementById("main");
+    main.textContent="";
+    main.appendChild(menuDisplay());
 }
-
-export default attachMenu();
+export default attachMenu;

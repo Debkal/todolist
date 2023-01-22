@@ -1,104 +1,105 @@
 import './style.css';
-import initializeSite from './website.js';
-
-import header from './header.js'
-import menuDisplay from './menu';
-import contactMenu from './contact';
-
-//image assets
-import fry from './fry.jpg';
-import doubledouble from './doubledouble.jpg';
-import italiansausage from './italiansausage.jpg';
-import nuggy from './nuggy.jpg';
-import pepperonipie from './pepperonipie.jpg';
-import sausagepie from './sausagepie.jpg';
-import sausagepie2 from './sausagepie2.jpg';
-import wings from './wings.jpg';
-import website from './website';
+import attachHome from "./home";
+import attachMenu from "./menu";
+import attachContact from "./contact";
 
 
-console.log('hello')
+//displaying header with Tabs
+function displayHeader() {
+    const header = document.createElement("header");
+    header.classList.add("header");
 
+    const headerTitle =document.createElement("div");
+    headerTitle.classList.add("header-title");
+    headerTitle.textContent= "Papa Philip's Pizza Palace";
 
-function homeDisplay() {
-    //append content
-    const content= document.getElementById('content');
-    //homepage
+    header.appendChild(headerTitle);
+    header.appendChild(displayTab());
 
-    //header
-    const header = document.createElement('div');
-    const headertab = document.createElement('div');
-    const homeTab = document.createElement('button');
-    const menuTab = document.createElement('button');
-    const contactTab = document.createElement('button');
-    //content
-    const homePageContent =document.createElement('div');
-    const homeTitleContainer = document.createElement('div');
-    const homeTitle =document.createElement('div');
-    const homeDescription =document.createElement('div');
-    const homeHoursContainer =document.createElement('div');
-    const homeHoursTitle = document.createElement('div');
-    const homeHours =document.createElement('div');
-    //homepage class defined
-    //header class
-    header.classList.add('header');
-    headertab.classList.add('header-tab');
-    homeTab.classList.add('home-tab');
-    menuTab.classList.add('menu-tab');
-    contactTab.classList.add('contact-tab');
-    //homepage class
-    homePageContent.classList.add('homepage-content');
-    homeTitleContainer.classList.add('homepage-title-container');
-    homeTitle.classList.add('home-title');
-    homeDescription.classList.add('home-description');
-    homeHoursContainer.classList.add('home-hours-container');
-    homeHours.classList.add('home-hours');
-    homeHoursTitle.classList.add('home-hours-title');
-    //homepage text
-    //header content
-    header.innerHTML="Papa Philip's Pizza Palace";
-    homeTab.textContent="Home";
-    menuTab.textContent="Menu";
-    contactTab.textContent="Contact";
-    //home content text
-    homeTitle.innerHTML="Pizza Palace dedicated to Quality"
-    homeDescription.innerHTML="Our Pizza is guaranteed to use the freshest high quality ingredients. Established in 1998 our Pizza was born at my home where I spent many days testing the perfect New York style crust. After several years I have finally decided my work can be open to the public as a passion project. All of our dough and ingredients are guaranteed made fresh in-house and never frozen or premade. Our motto is to make the best damn tasting food people can afford. It has been our tradition and culture to take pride in our work. Instead we want everyone to enjoy the promised work they pay the price for.  If it aint Papa Phil's it ain't gonna be good!"
-    homeHoursTitle.innerHTML="Hours";
-    homeHours.innerHTML="Thursday: 11am - 11pm\n Friday: 11am - 11pm\n Saturday: 11am - 11pm\nSunday: 11am - 8pm\n Monday: Closed\n Tuesday: Closed\n Wednesday: Closed";
-    //homepage appending
-    content.appendChild(header);
-    header.appendChild(headertab);
-    headertab.appendChild(homeTab);
-    headertab.appendChild(menuTab);
-    headertab.appendChild(contactTab);
-    content.appendChild(homePageContent);
-    homePageContent.appendChild(homeTitleContainer);
-    homeTitleContainer.appendChild(homeTitle);
-    homeTitleContainer.appendChild(homeDescription);
-    homePageContent.appendChild(homeHoursContainer);
-    homeHoursContainer.appendChild(homeHoursTitle);
-    homeHoursContainer.appendChild(homeHours);
-
-    return
-}
-initialPage();
-
-function initialPage () {
-    const tabSelection = document.querySelectorAll('#tabContainerDiv');
+    return header;
 
 }
-    //menu tab
-    const menuPageContent= document.createElement('div');
-    const menuPieTitle= document.createElement('div');
-    const menuPieList =document.createElement('ul');
-    const menuSideTitle= document.createElement('div');
-    const menuSideList =document.createElement('ul');
-    const menuDrinkTitle = document.createElement('div');
-    const menuDrinkList = document.createElement('ul');
-    //contact tab
-    const contactPageContent= document.createAttribute('div');
-    const contactTitle= document.createElement('div');
-    const contactList = document.createElement('ul');
-   
+//tab logic for switching pages upon click
+function displayTab() {
+    const headerTab =  document.createElement('div');
+    headerTab.classList.add('header-tab');
 
+    const homeTab= document.createElement("button");
+    homeTab.classList.add('tab-button');
+    homeTab.textContent ="Home";
+    homeTab.addEventListener("click", (e) => {
+        if(e.target.classList.contains("active"))return;
+        setActive(homeTab);
+        attachHome();
+    })
+    const menuTab= document.createElement('button');
+    menuTab.classList.add('tab-button');
+    menuTab.textContent= "Menu";
+    menuTab.addEventListener("click",(e) =>{
+        if(e.target.classList.contains("active"))return;
+        setActive(menuTab);
+        attachMenu();
+    })
+    const contactTab= document.createElement('button');
+    contactTab.classList.add('tab-button');
+    contactTab.textContent='Contact';
+    contactTab.addEventListener("click", (e) => {
+        if(e.target.classList.contains("active"))return;
+        setActive(contactTab);
+        attachContact();
+    })
+    //appending tabs
+    headerTab.appendChild(homeTab);
+    headerTab.appendChild(menuTab);
+    headerTab.appendChild(contactTab);
 
+    return headerTab;
+}
+//upon click tab button class change to active
+function setActive(button) {
+    const buttons = document.querySelectorAll(".tab-button")
+
+    buttons.forEach((button) => {
+        if (button !== this){
+            button.classList.remove("active");
+        }
+    });
+    button.classList.add("active");
+}
+function displayContent() {
+    const main = document.createElement("main");
+    main.classList.add("main");
+    main.id ="main";
+    return main;
+}
+function displayFooter() {
+    const d=new Date();
+
+    const footer=document.createElement("footer");
+    footer.classList.add("footer");
+
+    const devNote = document.createElement("p");
+    devNote.textContent= `Developed by Debkal ${d.getFullYear()}`;
+
+    const gitLink =document.createElement("a");
+    gitLink.href= "https://github.com/Debkal"
+
+    footer.appendChild(devNote);
+    footer.appendChild(gitLink);
+
+    return footer;
+}
+function initializeSite() {
+
+    const content =document.getElementById("content");
+
+    
+    content.appendChild(displayHeader());
+    content.appendChild(displayContent());
+    content.appendChild(displayFooter());
+    
+    setActive(document.querySelector('.tab-button'))
+    attachHome();
+}
+
+initializeSite();

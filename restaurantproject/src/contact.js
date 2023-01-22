@@ -5,9 +5,9 @@ function contactDisplay(){
 }
 
 function attachContact() {
-    const pageContent= document.getElementById("pageContent");
-    pageContent.textContent="";
-    pageContent.appendChild(contactDisplay());
+    const main = document.getElementById("main");
+    main.textContent="";
+    main.appendChild(contactDisplay());
 }
 
-export default attachContact();
+export default attachContact;
