@@ -15,7 +15,8 @@ function homeDisplay() {
     homeHours.classList.add('home-hours');
 
     const pizzaImage = document.createElement("img");
-    pizzaImage.src= pizzachef
+    pizzaImage.classList.add("pizza-image");
+    pizzaImage.src= pizzachef;
     pizzaImage.alt = "pizza";
     //text content
     homeTitle.textContent= "Pizza Palace dedicated to Quality";
