@@ -23,7 +23,7 @@ function displayHeader() {
 function displayTab() {
     const headerTab =  document.createElement('div');
     headerTab.classList.add('header-tab');
-
+//event listener that checks if the target tab is active, if not it activates the current tab selected
     const homeTab= document.createElement("button");
     homeTab.classList.add('tab-button');
     homeTab.textContent ="Home";
@@ -43,6 +43,7 @@ function displayTab() {
     const contactTab= document.createElement('button');
     contactTab.classList.add('tab-button');
     contactTab.textContent='Contact';
+    
     contactTab.addEventListener("click", (e) => {
         if(e.target.classList.contains("active"))return;
         setActive(contactTab);
@@ -58,7 +59,7 @@ function displayTab() {
 //upon click tab button class change to active
 function setActive(button) {
     const buttons = document.querySelectorAll(".tab-button")
-
+//goes through each button to remove the acive class,adds active class to current selected
     buttons.forEach((button) => {
         if (button !== this){
             button.classList.remove("active");
