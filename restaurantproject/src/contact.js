@@ -3,15 +3,23 @@ function contactDisplay(){
     contactContent.classList.add('contact-content');
 
     const contactPhone = document.createElement('p');
+    contactPhone.classList.add("contact-phone");
+    const phone=document.createElement('div');
+    phone.classList.add('phone');
+    phone.textContent=("Phone");
     contactPhone.textContent=('1-222-333-4444');
 
+    const hours=document.createElement('div');
+    hours.classList.add("hours");
+    hours.textContent="Hours of Operation";
     const contactHours = document.createElement('ul');
+    contactHours.classList.add("contact-hours");
     const mondayHours = document.createElement("li");
-    mondayHours.textContent= "Closed";
+    mondayHours.textContent= "Monday: Closed";
     const tuesdayHours = document.createElement("li");
-    tuesdayHours.textContent="Closed";
+    tuesdayHours.textContent="Tuesday: Closed";
     const wednesdayHours = document.createElement("li");
-    wednesdayHours.textContent="Closed";
+    wednesdayHours.textContent="Wednesday: Closed";
     const thursdayHours = document.createElement('li');
     thursdayHours.textContent="Thursday: 12pm -11pm";
     const fridayHours = document.createElement('li');
@@ -29,13 +37,19 @@ function contactDisplay(){
     contactHours.appendChild(tuesdayHours);
     contactHours.appendChild(wednesdayHours);
     
+    const location=document.createElement('div');
+    location.classList.add("location");
+    location.textContent="Location";
     const contactLocation = document.createElement("div");
     contactLocation.classList.add("contact-location");
-    contactLocation.textContent='123 Pizza Palace CT,PizzaTown IL 66666';
+    contactLocation.textContent='123 Pizza Palace CT, PizzaTown IL 66666';
 
-    contactContent.appendChild(contactPhone);
-    contactContent.appendChild(contactHours);
-    contactContent.appendChild(contactLocation);
+    contactContent.appendChild(phone);
+    phone.appendChild(contactPhone);
+    contactContent.appendChild(hours);
+    hours.appendChild(contactHours);
+    contactContent.appendChild(location);
+    location.appendChild(contactLocation);
 
     return contactContent;
 }

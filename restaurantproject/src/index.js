@@ -67,6 +67,7 @@ function setActive(button) {
     });
     button.classList.add("active");
 }
+//main content being displayed
 function displayContent() {
     const main = document.createElement("main");
     main.classList.add("main");
@@ -90,6 +91,7 @@ function displayFooter() {
 
     return footer;
 }
+//render all the content
 function initializeSite() {
 
     const content =document.getElementById("content");

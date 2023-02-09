@@ -66,11 +66,13 @@ font-weight:400;
     font-size:1.5rem;
     font-weight:500;
     padding: 1rem;
+    margin-bottom:1rem;
     width: 80%;
     text-align: center;
 }
 .pizza-image{
     width:80%;
+    border-radius: 1em;
 }
 .home-description-container{
     display:flex;
@@ -95,5 +97,76 @@ font-weight:400;
     z-index: 3;
 }
 .footer{
+    padding:1rem;
     text-align: center;
+}
+.menu-content{
+display:grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: max-content;
+justify-content: center;
+align-items: center;
+padding: 1rem;
+margin: 0.5rem;
+}
+.menu-item{
+    z-index: 1;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding:1rem;
+    margin:6rem;
+    margin-bottom:2.5rem;
+max-height:70%;
+width: 60%;
+background-image: radial-gradient(circle at center,#292524,#443E3C);
+border-radius: 1em;
+}
+.menu-food-name{
+    font-size:1.5rem;
+    padding-bottom:1rem;
+    font-weight: 500;
+}
+.menu-item p{
+    max-width: 40ch;
+}
+.menu-image{
+    opacity: 100%;
+    z-index:2;
+padding: 1rem;
+width: 60%;
+height: 225px;
+border-radius: 5em;
+
+}
+.contact-content{
+text-align: start;
+padding: 1rem;
+margin:1rem;
+}
+li{
+    list-style: none;
+    padding:0.25rem;
+}
+.phone{
+    font-size:1.5rem;
+}
+.contact-phone{
+    font-size:1rem;
+}
+.hours{
+    font-size:1.5rem;
+}
+ul{
+    font-size:1rem;
+}
+.location{
+    font-size:1.5rem;    
+    
+}
+.contact-location{
+    margin-top:1rem;
+    margin-bottom:1rem;
+    font-size:1rem;
 }

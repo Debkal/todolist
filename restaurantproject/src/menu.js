@@ -47,6 +47,7 @@ function menuItem(name,image,description,price){
     menuItem.classList.add("menu-item");
 
     const menuFoodName = document.createElement("div");
+    menuFoodName.classList.add("menu-food-name");
     menuFoodName.textContent= name;
 
     const menuFoodDescription = document.createElement("p");
