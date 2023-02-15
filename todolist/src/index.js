@@ -1,5 +1,5 @@
 import './style.css';
-
+// header dom
 function displayHeader() {
     const header = document.createElement("header");
     header.classList.add("header");
@@ -16,13 +16,14 @@ function displayHeader() {
     
     return header;
 }
-
+// main display dom
 function displayMain(){
     const main=document.createElement("main");
     main.classList.add("main");
     main.id= "main";
     return main;
 }
+//footer dom
 function displayFooter(){
     const d=new Date();
 
@@ -40,6 +41,7 @@ function displayFooter(){
 
     return footer;
 }
+//set button active
 function setNavActive(button) {
     const buttons= document.querySelectorAll(".nav-button");
     buttons.forEach((button) => {
@@ -49,6 +51,16 @@ function setNavActive(button) {
     });
     button.classList.add("active");
 }
+function setTaskActive(button) {
+    const buttons= document.querySelectorAll(".add-task");
+    buttons.forEach((button) => {
+        if (button !== this){
+            button.classList.remove("active");
+        }
+    });
+    button.classList.add("active");
+}
+//nav dom
 function displayNav() {
     const nav = document.createElement("nav");
     nav.classList.add("nav");
@@ -67,7 +79,7 @@ function displayTasks(){
     tooDooTab.textContent="Set Task";
     tooDooTab.addEventListener("click", (e) => {
         if(e.target.classList.contains("active"))return;
-        setNavActive(taskTab);
+        setNavActive(tooDooTab);
         displayTaskContent();
     })
     const todayTab = document.createElement("button");
@@ -75,7 +87,7 @@ function displayTasks(){
     todayTab.textContent="Today";
     todayTab.addEventListener("click", (e) => {
         if(e.target.classList.contains("active"))return;
-        setNavActive(taskTab);
+        setNavActive(todayTab);
         displayToday();
     })
     const weekTab = document.createElement("button");
@@ -83,7 +95,7 @@ function displayTasks(){
     weekTab.textContent="Week";
     weekTab.addEventListener("click", (e) => {
         if(e.target.classList.contains("active"))return;
-        setNavActive(taskTab);
+        setNavActive(weekTab);
         displayWeek();
     })
 
@@ -92,10 +104,21 @@ function displayTasks(){
     taskSection.appendChild(weekTab);
 
     return taskSection;
-
 }
 function displayTaskContent(){
     const content = document.createElement("div");
+    content.classList.add("content");
+    const contentTitle = document.createElement("div");
+    contentTitle.classList.add("content-title");
+    contentTitle.textContent= "Task's To Do";
+
+    const inputTask = document.createElement("input");
+    inputTask.classList.add("task-input")
+    const addTask= document.createElement("button");
+    addTask.classList.add("add-task");
+    addTask.addEventListener("click", (e) => {
+
+    })
 }
 function displayToday(){
     const content=document.createElement("div");
