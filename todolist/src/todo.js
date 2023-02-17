@@ -1,6 +1,6 @@
 import { compareAsc, toDate} from 'date-fns'
 import Project from'./project'
-import Task from './Task'
+import Task from './settask'
 
 export default class todo{
     constructor() {
@@ -44,6 +44,32 @@ export default class todo{
                 const taskName = `${task.getName()} (${project.getName()})`
                 this.getProject('Today').addTask(new Task(taskName, task.getDate()))
             })
+        })
+    }
+    updateWeekProject() {
+        this.getProject('Week').tasks = []
+
+        this.projects.forEach((project) => {
+            this.projects.forEach((project) => {
+                if (project.getName() ==='Today' || project.getName() === 'This week')
+                    return
+                
+                const weekTasks = project.getTasksWeek() 
+                weekTasks.forEach((task) => {
+                    const taskName = `${task.getName()} (${project.getName()})`
+                    this.getProject('Week').addTask(new Task(taskName, task.getDate()))
+                })
+        })
+        this.getProject('Week').setTasks(
+            this.getProject('Week')
+            .getTasks()
+            .sort((taskA, taskB) =>
+                compareAsc(
+                    toDate(new Date(taskA.getDateFormatted())),
+                    toDate(new Date(taskB.getDateFormatted()))
+                )
+            )
+        )
         })
     }
 }

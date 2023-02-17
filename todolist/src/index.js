@@ -1,4 +1,8 @@
 import './style.css';
+import { format } from 'date-fns'
+import Storage from './storage'
+import Project from './project';
+import Task from './settask';
 // header dom
 function displayHeader() {
     const header = document.createElement("header");
@@ -117,7 +121,7 @@ function displayTaskContent(){
     const addTask= document.createElement("button");
     addTask.classList.add("add-task");
     addTask.addEventListener("click", (e) => {
-
+        
     })
 }
 function displayToday(){
@@ -128,4 +132,48 @@ function displayWeek(){
 }
 function displayProject() {
     const project= document.createElement("div");
+    project.classList.add("project");
+
+    const projectTitle = document.createElement("div");
+    projectTitle.classList.add("project-title");
+    projectTitle.textContent= "Projects";
+
+    const projectList = document.createElement("div");
+    projectList.classList.add("project-list");
+    projectList.id = "projectList";
+    
+    const projectAddButton = document.createElement('button');
+    projectAddButton.classList.add("project-add-button");
+    projectAddButton.textContent="Add Project";
+
+    project.appendChild(projectTitle);
+    project.appendChild(projectList);
+    project.appendChild(projectAddButton);
+
+    return project;
+}
+function loadProjects() {
+    Storage.getToDo()
+    .getProjects()
+    .forEach((project) => {
+        if(
+            project.name !== 'Set Task' &&
+            project.name !== 'Today' &&
+            project.name !== 'Week' 
+        )
+        createProject()
+    })
+}
+function renderHomePage() {
+
+}
+function createProject(name){
+    const userProjects = document.getElementById('projectList')
+    userProjects.innerHTML += `
+    <button class ="button-project" data-project-button>
+        <div class = "project-panel">
+            <i class="fas fa-tasks"></i>
+            <span>${name}</span>
+        </div>
+    </button>`
 }
