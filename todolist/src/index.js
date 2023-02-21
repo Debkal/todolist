@@ -25,6 +25,16 @@ function displayMain(){
     const main=document.createElement("main");
     main.classList.add("main");
     main.id= "main";
+    const nav= document.createElement("nav");
+
+    nav.appendChild(displayTasks());
+    nav.appendChild(displayProject());
+    const content = document.createElement("div");
+    content.classList.add("content");
+    content.id="content";
+
+    main.appendChild(nav);
+    main.appendChild(content);
     return main;
 }
 //footer dom
@@ -65,15 +75,6 @@ function setTaskActive(button) {
     button.classList.add("active");
 }
 //nav dom
-function displayNav() {
-    const nav = document.createElement("nav");
-    nav.classList.add("nav");
-    nav.id="nav";
-
-    nav.appendChild(displayTasks);
-    nav.appendChild(displayProject);
-    return nav;
-}
 function displayTasks(){
     const taskSection = document.createElement("div");
     taskSection.classList.add("toodoo-section");
@@ -110,8 +111,8 @@ function displayTasks(){
     return taskSection;
 }
 function displayTaskContent(){
-    const content = document.createElement("div");
-    content.classList.add("content");
+    const content = document.getElementById("content");
+
     const contentTitle = document.createElement("div");
     contentTitle.classList.add("content-title");
     contentTitle.textContent= "Task's To Do";
@@ -120,12 +121,19 @@ function displayTaskContent(){
     inputTask.classList.add("task-input")
     const addTask= document.createElement("button");
     addTask.classList.add("add-task");
-    addTask.addEventListener("click", (e) => {
-        
-    })
+    addTask.textContent="Add Task";
+
+    content.appendChild(contentTitle);
+    content.appendChild(addTask);
+    return content;
 }
 function displayToday(){
-    const content=document.createElement("div");
+    const content=document.getElementById("content");
+
+    const todayTitle = document.createElement("div");
+    todayTitle.classList.add("today-title");
+
+    content.appendChild(todayTitle);
 }
 function displayWeek(){
     const content= document.createElement("div");
@@ -144,6 +152,7 @@ function displayProject() {
     
     const projectAddButton = document.createElement('button');
     projectAddButton.classList.add("project-add-button");
+    projectAddButton.id ="projectAddButton"
     projectAddButton.textContent="Add Project";
 
     project.appendChild(projectTitle);
@@ -161,11 +170,15 @@ function loadProjects() {
             project.name !== 'Today' &&
             project.name !== 'Week' 
         )
-        createProject()
+        createProject(project.name)
     })
 }
 function renderHomePage() {
+    const body=  document.body;
 
+    body.appendChild(displayHeader());
+    body.appendChild(displayMain())
+    body.appendChild(displayFooter());
 }
 function createProject(name){
     const userProjects = document.getElementById('projectList')
@@ -177,3 +190,9 @@ function createProject(name){
         </div>
     </button>`
 }
+
+function addProjectButtons(){
+    const addProjectButton = document.getElementById("projectAddButton");
+
+}
+renderHomePage();
