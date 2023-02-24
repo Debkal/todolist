@@ -55,7 +55,7 @@ function displayFooter(){
 
     return footer;
 }
-//set button active
+//set nav button active
 function setNavActive(button) {
     const buttons= document.querySelectorAll(".nav-button");
     buttons.forEach((button) => {
@@ -65,6 +65,7 @@ function setNavActive(button) {
     });
     button.classList.add("active");
 }
+//set task button active
 function setTaskActive(button) {
     const buttons= document.querySelectorAll(".add-task");
     buttons.forEach((button) => {
@@ -73,6 +74,16 @@ function setTaskActive(button) {
         }
     });
     button.classList.add("active");
+}
+//reset content and active classes
+function resetContent(){
+    const content = document.getElementById("content");
+    content.innerHTML="";
+    
+}
+function resetActive(){
+    const removeActive = document.querySelectorAll(".nav-button");
+    removeActive.classList.remove("active");
 }
 //nav dom
 function displayTasks(){
@@ -86,6 +97,7 @@ function displayTasks(){
         if(e.target.classList.contains("active"))return;
         setNavActive(tooDooTab);
         displayTaskContent();
+        
     })
     const todayTab = document.createElement("button");
     todayTab.classList.add("nav-button");
@@ -110,6 +122,7 @@ function displayTasks(){
 
     return taskSection;
 }
+//dom for task content
 function displayTaskContent(){
     const content = document.getElementById("content");
 
@@ -121,11 +134,63 @@ function displayTaskContent(){
     inputTask.classList.add("task-input")
     const addTask= document.createElement("button");
     addTask.classList.add("add-task");
+    addTask.id ="addTask"
     addTask.textContent="Add Task";
 
     content.appendChild(contentTitle);
     content.appendChild(addTask);
+    addTask.addEventListener("click", (e) => {
+        if(e.target.classList.contains("active"))return;
+        setTaskActive(addTask);
+        displayInput();
+    })
     return content;
+}
+//dom for displaying task input
+function displayInput(){
+    const content = document.getElementById("content");
+    const inputContainer = document.createElement("div");
+    inputContainer.classList.add("input-container");
+    const taskLabel = document.createElement("label");
+    taskLabel.textContent = "Task Name";
+    taskLabel.classList.add("task-label");
+    const taskName = document.createElement("input");
+    taskName.classList.add("task-name");
+    taskName.id = "taskName";
+    taskName.type="text";
+
+    const taskDateLabel = document.createElement("label");
+    taskDateLabel.textContent = "Enter the date";
+    const taskDate = document.createElement("input");
+    taskDate.classList.add("task-date");
+    taskDate.id="taskDate";
+    taskDate.type="datetime-local";
+    
+
+    const greenButton = document.createElement("button");
+    greenButton.classList.add("green-button");
+    greenButton.textContent="Add";
+    greenButton.addEventListener("click", (e) => {
+        
+    })
+
+    const redButton = document.createElement("button");
+    redButton.classList.add("red-button");
+    redButton.textContent="Cancel";
+    redButton.addEventListener("click", (e) => {
+        resetContent();
+        resetActive();
+    })
+    resetContent();
+    inputContainer.appendChild(taskLabel);
+    inputContainer.appendChild(taskName);
+    inputContainer.appendChild(taskDateLabel);
+    inputContainer.appendChild(taskDate);
+    inputContainer.appendChild(greenButton);
+    inputContainer.appendChild(redButton);
+
+    content.appendChild(inputContainer);
+    return taskDate,taskName
 }
 function displayToday(){
     const content=document.getElementById("content");
