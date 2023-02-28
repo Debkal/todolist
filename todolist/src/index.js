@@ -81,9 +81,19 @@ function resetContent(){
     content.innerHTML="";
     
 }
-function resetActive(){
-    const removeActive = document.querySelectorAll(".nav-button");
-    removeActive.classList.remove("active");
+//remove input container
+function resetInput(){
+    const content = document.getElementById("content");
+    const inputContainer = document.getElementById("inputContainer");
+    content.removeChild(inputContainer);
+}
+function resetActive(button){
+    const buttons= document.querySelectorAll(".add-task");
+    buttons.forEach((button) => {
+        if (button !== this){
+            button.classList.remove("active");
+        }
+    });
 }
 //nav dom
 function displayTasks(){
@@ -128,6 +138,7 @@ function displayTaskContent(){
 
     const contentTitle = document.createElement("div");
     contentTitle.classList.add("content-title");
+    contentTitle.id = "contentTitle";
     contentTitle.textContent= "Task's To Do";
 
     const inputTask = document.createElement("input");
@@ -148,9 +159,13 @@ function displayTaskContent(){
 }
 //dom for displaying task input
 function displayInput(){
+    const navButton = document.querySelectorAll(".nav-button");
+    const addTask = document.querySelectorAll('add-task');
     const content = document.getElementById("content");
     const inputContainer = document.createElement("div");
     inputContainer.classList.add("input-container");
+    inputContainer.classList.add("active");
+    inputContainer.id ="inputContainer";
     const taskLabel = document.createElement("label");
     taskLabel.textContent = "Task Name";
     taskLabel.classList.add("task-label");
@@ -178,10 +193,9 @@ function displayInput(){
     redButton.classList.add("red-button");
     redButton.textContent="Cancel";
     redButton.addEventListener("click", (e) => {
-        resetContent();
-        resetActive();
+        resetInput()
+        resetActive(addTask)
     })
-    resetContent();
     inputContainer.appendChild(taskLabel);
     inputContainer.appendChild(taskName);
     inputContainer.appendChild(taskDateLabel);
@@ -193,6 +207,7 @@ function displayInput(){
     return taskDate,taskName
 }
 function displayToday(){
+    resetContent()
     const content=document.getElementById("content");
 
     const todayTitle = document.createElement("div");
@@ -225,6 +240,9 @@ function displayProject() {
     project.appendChild(projectAddButton);
 
     return project;
+}
+function addTask() {
+    const projectName = document.getElementById
 }
 function loadProjects() {
     Storage.getToDo()

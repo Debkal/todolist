@@ -1,0 +1,13 @@
+body{
+    background: grey;
+}
+
+.input-container.active{
+    display:block;
+}
+.input-container{
+    display:none;
+}
+.add-task.active{
+    display:none;
+}
