@@ -2,7 +2,7 @@ import { compareAsc, toDate} from 'date-fns'
 import Project from'./project'
 import Task from './settask'
 
-export default class todo{
+export default class Todo{
     constructor() {
         this.projects = []
         this.projects.push(new Project('Set Task'))

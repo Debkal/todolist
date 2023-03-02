@@ -1,6 +1,6 @@
 import Project from "./project";
 import Task from "./settask"
-import todo from "./todo";
+import Todo from "./todo";
 
 export default class Storage {
     static saveToDo(data){
@@ -10,7 +10,7 @@ export default class Storage {
     static getToDo() {
         const todo = Object.assign(
             new Todo(),
-            Json.parse(localStorage.getItem('todo'))
+            JSON.parse(localStorage.getItem('todo'))
         )
 
         todo.setProjects(
@@ -38,9 +38,9 @@ export default class Storage {
         todo.deleteProject(projectName)
         Storage.saveToDo(todo)
     }
-    static addTask(projectName, task) {
+    static addTask(projectName, task,dueDate) {
         const todo = Storage.getToDo()
-        todo.getProject(projectName).addTask(task)
+        todo.getProject(projectName).addTask(task).setDate(dueDate)
         Storage.saveToDo(todo)
     }
     static deleteTask(projectName, taskName) {

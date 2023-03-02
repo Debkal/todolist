@@ -141,6 +141,10 @@ function displayTaskContent(){
     contentTitle.id = "contentTitle";
     contentTitle.textContent= "Task's To Do";
 
+    const taskContainer = document.createElement("div");
+    taskContainer.classList.add("task-container");
+    taskContainer.id = "taskContainer";
+
     const inputTask = document.createElement("input");
     inputTask.classList.add("task-input")
     const addTask= document.createElement("button");
@@ -148,7 +152,9 @@ function displayTaskContent(){
     addTask.id ="addTask"
     addTask.textContent="Add Task";
 
+    
     content.appendChild(contentTitle);
+    content.appendChild(taskContainer);
     content.appendChild(addTask);
     addTask.addEventListener("click", (e) => {
         if(e.target.classList.contains("active"))return;
@@ -173,6 +179,7 @@ function displayInput(){
     taskName.classList.add("task-name");
     taskName.id = "taskName";
     taskName.type="text";
+    taskName.required= true;
 
     const taskDateLabel = document.createElement("label");
     taskDateLabel.textContent = "Enter the date";
@@ -180,13 +187,16 @@ function displayInput(){
     taskDate.classList.add("task-date");
     taskDate.id="taskDate";
     taskDate.type="datetime-local";
+    taskDate.min="2023-03-01T00:00";
+    taskDate.required = true;
     
 
     const greenButton = document.createElement("button");
     greenButton.classList.add("green-button");
     greenButton.textContent="Add";
     greenButton.addEventListener("click", (e) => {
-        
+        addTaskInput()
+
     })
 
     const redButton = document.createElement("button");
@@ -218,6 +228,7 @@ function displayToday(){
 function displayWeek(){
     const content= document.createElement("div");
 }
+//project nav dom
 function displayProject() {
     const project= document.createElement("div");
     project.classList.add("project");
@@ -241,8 +252,49 @@ function displayProject() {
 
     return project;
 }
-function addTask() {
-    const projectName = document.getElementById
+//store input values
+function addTaskInput() {
+    const contentTitle = document.getElementById("contentTitle");
+    const taskName = document.getElementById("taskName").value;
+    const taskDate = document.getElementById("taskDate").value;
+
+   /* if (Storage.getToDo().getProjects(projectName).contains(taskName)){
+        alert("Task name must be different from Project Name!");
+        taskName.value='';
+        return
+    }*/
+    Storage.addTask(contentTitle,new Task(taskName),new Task(taskDate))
+    return createTask(taskName,taskDate);
+}
+//create dom task from input values
+function createTask(taskName,taskDate) {
+    const taskContainer = document.getElementById("taskContainer");
+    const leftTask = document.createElement("div");
+    leftTask.classList.add("left-task");
+    const leftIcon = document.createElement("i");
+    leftIcon.classList.add("left-icon");
+    const leftP = document.createElement("p");
+    leftP.classList.add('left-p');
+    leftP.textContent=`${taskName}`
+
+    const rightTask = document.createElement("div");
+    rightTask.classList.add("right-task");
+    const rightIcon = document.createElement("i");
+    rightIcon.classList.add("right-icon");
+    const rightP = document.createElement("p");
+    rightP.classList.add("right-p");
+    rightP.textContent=`${taskDate}`;
+
+    leftTask.appendChild(leftIcon);
+    leftTask.appendChild(leftP);
+
+    rightTask.appendChild(rightIcon);
+    rightTask.appendChild(rightP);
+    
+    taskContainer.appendChild(leftTask);
+    taskContainer.appendChild(rightTask);
+
+    return taskContainer;
 }
 function loadProjects() {
     Storage.getToDo()
